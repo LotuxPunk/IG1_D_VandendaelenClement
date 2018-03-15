@@ -115,6 +115,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="Francais.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Constantes.h" />
+    <ClInclude Include="General.h" />
+    <ClInclude Include="Lexique.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="Lexique.obj" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Interface.c" />
+    <ClCompile Include="Principale.c" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
