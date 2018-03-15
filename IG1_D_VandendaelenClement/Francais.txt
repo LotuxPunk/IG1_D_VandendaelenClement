@@ -1,0 +1,15 @@
+1000 Menu
+1001 Charger la liste des joueurs inscrits
+1002 Ajouter un joueur et ses personnages
+1003 Ajouter un personnage à un joueur
+1004 Supprimer un joueur
+1005 Afficher les joueurs et ses personnages
+1006 Sauver les joueurs et les personnages
+1007 Quitter
+2001 Pseudo :
+2002 Nom : 
+5001 Joueur deja existant !
+5002 Aucune erreur
+5003 Allocation memoire
+5004 Erreur a l'ouverture du fichier
+5005 Mauvais choix, recommencez !
