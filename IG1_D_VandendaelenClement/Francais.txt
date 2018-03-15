@@ -8,6 +8,7 @@
 1007 Quitter
 2001 Pseudo :
 2002 Nom : 
+2102 Choix :
 5001 Joueur deja existant !
 5002 Aucune erreur
 5003 Allocation memoire

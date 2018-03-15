@@ -1,4 +1,8 @@
-#pragma once
+#ifndef CONSTANTES_H
+#define CONSTANTE_H
+
+#define NBCARMAXJOUEUR 100
+#define NBCARMAXPERSONNAGE 100
 
 typedef enum codeErreur CodeErreur;
 enum codeErreur {
@@ -19,3 +23,19 @@ enum choix {
 	SAUVER_JOUEUR_PERSONNAGES,
 	QUITTER
 };
+
+typedef struct joueur Joueur;
+struct joueur {
+	char pseudo[NBCARMAXJOUEUR];
+	Personnage *pDebPersonnages;
+	Joueur *pSuiv;
+};
+
+typedef struct personnage Personnage;
+struct personnage {
+	char nom[NBCARMAXPERSONNAGE];
+	int point;
+	Personnage *pSuiv;
+};
+
+#endif // !CONSTANTES_H
