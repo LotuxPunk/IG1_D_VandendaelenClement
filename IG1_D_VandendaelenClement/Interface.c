@@ -1,5 +1,7 @@
 #include "General.h"
 
+short reponseObtenue(Message *pLexique);
+
 Choix choixObtenu(Message * pLexique, NumMessage numMenu) {
 	bool choixValide;
 	Choix choix;
@@ -56,5 +58,70 @@ void dialogue(Message * pLexique) {
 CodeErreur ajouterPersonnage(Message * pLexique, Joueur * pDebJoueurs)
 {
 	return PAS_D_ERREUR;
+}
+
+CodeErreur ajouterJoueurPersonnage(Message * pLexique, Joueur * pDebJoueur) {
+	Joueur *pNouvJoueur = NULL;
+	CodeErreur erreur;
+	if (nouveauJoueur(pNouvJoueur)) {
+		erreur = ALLOCATION_MEMOIRE;
+	}
+	else {
+		char pseudo[NBCARMAXJOUEUR];
+		Joueur *pJoueur = NULL, *pSauvJoueur = NULL;
+		erreur = PAS_D_ERREUR;
+		afficherTitre(pLexique, TITRE_JOUEUR_AJOUT);
+		
+		pseudoObtenu(pLexique, pseudo);
+		
+		if (joueurExiste(pDebJoueur, pseudo, pJoueur, pSauvJoueur)) {
+			libereJoueur(pJoueur);
+			erreur = JOUEUR_DEJA_PRESENT;
+		}
+		else {
+			bool allocationOk;
+			ajouteJoueur(pDebJoueur, pseudo, pNouvJoueur, pJoueur, pSauvJoueur);
+			do {
+				Personnage *pNouvPerso = NULL;
+				allocationOk = nouveauPersonnage(pNouvPerso);
+				if (allocationOk) {
+					erreur = ALLOCATION_MEMOIRE;
+				}
+				else {
+					erreur = ajouterPersonnageAJoueur(pLexique, pNouvJoueur, pNouvPerso);
+				}
+			} while (allocationOk && reponseObtenue(pLexique) == OUI);
+		}
+	}
+	return erreur;
+}
+
+CodeErreur ajouterPersonnageAJoueur(pLexique, pNouvJoueur, pNouvPerso) {
+	//A FAIRE
+	return PAS_D_ERREUR;
+}
+
+void pseudoObtenu(Message *pLexique, char *pseudo) {
+	bool pseudoValide;
+	do {
+		afficherMessage(pLexique, OBT_PSEUDO);
+		gets_s(pseudo, NBCARMAXJOUEUR);
+		pseudoValide = strlen(pseudo) > 0 && pseudo[0] <= 'A' && pseudo[0] >= 'Z';
+		if (!pseudoValide) {
+			afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + PSEUDO_NON_VALIDE);
+		}
+	} while (!pseudoValide);
+}
+
+short reponseObtenue(Message *pLexique) {
+	short reponse;
+	do {
+		afficherMessage(pLexique, OBT_REPONSE);
+		scanf_s("%hd", &reponse);
+		if (reponse != OUI || reponse != NON) {
+			afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + MAUVAIS_CHOIX);
+		}
+	} while (reponse != OUI && reponse != NON);	
+	return reponse;
 }
 

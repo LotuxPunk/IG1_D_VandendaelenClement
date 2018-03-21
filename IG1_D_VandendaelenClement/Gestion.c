@@ -33,7 +33,7 @@ void libereJoueur(Joueur *pJoueur) {
 	free(pJoueur);
 }
 
-void libèrePersonnage(Personnage * pPerso) {
+void liberePersonnage(Personnage * pPerso) {
 	free(pPerso);
 }
 

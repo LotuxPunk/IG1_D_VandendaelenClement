@@ -9,8 +9,12 @@
 2001 Pseudo :
 2002 Nom : 
 2102 Choix :
+2201 Ajouter un autre personnage ? (1. Oui, 2. Non) :
 5001 Joueur deja existant !
 5002 Aucune erreur
 5003 Allocation memoire
 5004 Erreur a l'ouverture du fichier
 5005 Mauvais choix, recommencez !
+5006 Votre pseudo doit comporter au moins une lettre et commencer par une majuscule.
+5007 Le joueur existe déjà.
+

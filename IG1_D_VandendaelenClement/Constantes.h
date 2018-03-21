@@ -5,12 +5,20 @@
 #define NBCARMAXPERSONNAGE 100
 
 typedef enum codeErreur CodeErreur;
-enum codeErreur {
+enum codeErreur { 
+	JOUEUR_EXISTANT = 1,
 	PAS_D_ERREUR,
-	JOUEUR_EXITANT,
 	ALLOCATION_MEMOIRE,
 	OUVERTURE_FICHIER,
-	MAUVAIS_CHOIX
+	MAUVAIS_CHOIX,
+	PSEUDO_NON_VALIDE,
+	JOUEUR_DEJA_PRESENT
+};
+
+typedef enum reponse Reponse;
+enum reponse {
+	OUI,
+	NON
 };
 
 typedef enum choix Choix;
