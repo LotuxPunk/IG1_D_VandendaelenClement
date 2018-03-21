@@ -27,7 +27,7 @@ enum choix {
 typedef struct personnage Personnage;
 struct personnage {
 	char nom[NBCARMAXPERSONNAGE];
-	int point;
+	int points;
 	Personnage *pSuiv;
 };
 
