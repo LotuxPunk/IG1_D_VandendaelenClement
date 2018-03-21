@@ -126,6 +126,7 @@
     <Object Include="Lexique.obj" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Gestion.c" />
     <ClCompile Include="Interface.c" />
     <ClCompile Include="Principale.c" />
   </ItemGroup>

@@ -53,3 +53,8 @@ void dialogue(Message * pLexique) {
 	}
 }
 
+CodeErreur ajouterPersonnage(Message * pLexique, Joueur * pDebJoueurs)
+{
+	return PAS_D_ERREUR;
+}
+
