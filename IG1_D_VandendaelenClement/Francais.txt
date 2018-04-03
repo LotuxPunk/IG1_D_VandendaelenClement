@@ -17,4 +17,5 @@
 5005 Mauvais choix, recommencez !
 5006 Votre pseudo doit comporter au moins une lettre et commencer par une majuscule.
 5007 Le joueur existe deja.
+5008 Personnage déjà présent.
 

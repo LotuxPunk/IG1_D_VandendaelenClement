@@ -96,9 +96,26 @@ CodeErreur ajouterJoueurPersonnage(Message * pLexique, Joueur * pDebJoueur) {
 	return erreur;
 }
 
-CodeErreur ajouterPersonnageAJoueur(pLexique, pNouvJoueur, pNouvPerso) {
-	//A FAIRE
-	return PAS_D_ERREUR;
+CodeErreur ajouterPersonnageAJoueur(Message *pLexique, Joueur *pJoueur, Personnage *pNouvPerso) {
+	char nom[NBCARMAXJOUEUR];
+	bool persoExiste;
+	Personnage *pPerso = NULL, *pSauvPerso = NULL;
+	CodeErreur erreur;
+	nomObtenu(pLexique, nom);
+	persoExiste = personnageExiste(pJoueur, nom, pPerso, pSauvPerso);
+	if (persoExiste) {
+		erreur = PERSONNAGE_DEJA_PRESENT;
+		afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + erreur);
+		liberePersonnage(pNouvPerso);
+	}
+	else {
+		
+	}
+}
+
+int pointsObtenus(Message * pLexique) {
+
+	return 0;
 }
 
 void pseudoObtenu(Message *pLexique, char *pseudo) {
@@ -125,3 +142,7 @@ short reponseObtenue(Message *pLexique) {
 	return reponse;
 }
 
+void nomObtenu(Message * pLexique, char * nom){
+	afficherMessage(pLexique, OBT_NOM);
+	gets_s(nom, NBCARMAXJOUEUR);
+}

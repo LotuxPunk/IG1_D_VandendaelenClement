@@ -15,7 +15,9 @@ void dialogue(Message *pLexique);
 CodeErreur ajouterPersonnage(Message *pLexique, Joueur *pDebJoueurs);
 CodeErreur ajouterJoueurPersonnage(Message *pLexique, Joueur *pDebJoueur);
 void pseudoObtenu(Message *pLexique, char *pseudo);
-CodeErreur ajouterPersonnageAJoueur(pLexique, pNouvJoueur, pNouvPerso);
+void nomObtenu(Message *pLexique, char *nom);
+CodeErreur ajouterPersonnageAJoueur(Message *pLexique, Joueur *pJoueur, Personnage *pNouvPerso);
+int pointsObtenus(Message *pLexique);
 
 //Gestion
 bool joueurExiste(Joueur *pDebJoueur, char *pseudo, Joueur *pJoueur, Joueur *pSauvJoueur);
@@ -27,4 +29,5 @@ void liberePersonnage(Personnage *pPerso);
 void ajouteJoueur(Joueur *pDebJoueur, char *pseudo, Joueur *pNouvJoueur, Joueur *pJoueur, Joueur *pSauvJoueur);
 void ajoutePersonnage(Joueur *pJoueur, char *nom, int points, Personnage *pNouvPerso, Personnage *pPerso, Personnage *pSauvPerso);
 void supprimeJoueur(Joueur *pDebJoueur, Joueur *pJoueur, Joueur *pSauvJoueur);
+
 #endif // !GENERAL_H
