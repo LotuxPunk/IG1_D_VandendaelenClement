@@ -31,11 +31,6 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <Object Include="Lexique.obj">
-      <Filter>Fichiers de ressources</Filter>
-    </Object>
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="Principale.c">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
@@ -45,5 +40,10 @@
     <ClCompile Include="Gestion.c">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Object Include="Lexique.obj">
+      <Filter>Fichiers de ressources</Filter>
+    </Object>
   </ItemGroup>
 </Project>

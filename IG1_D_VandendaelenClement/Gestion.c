@@ -1,11 +1,12 @@
 #include "General.h"
 
-bool joueurExiste(Joueur * pDebJoueur, char * pseudo, Joueur * pJoueur, Joueur * pSauvJoueur) {
-	pJoueur = pDebJoueur;
+bool joueurExiste(Joueur * pDebJoueur, char * pseudo, Joueur ** ppJoueur, Joueur ** ppSauvJoueur) {
+	Joueur *pJoueur = pDebJoueur;
 	while (pJoueur != NULL && strcmp(pseudo, pJoueur->pseudo)) {
-		pSauvJoueur = pJoueur;
+		*ppSauvJoueur = pJoueur;
 		pJoueur = pJoueur->pSuiv;
 	}
+	*ppJoueur = pJoueur;
 	return pJoueur != NULL && strcmp(pseudo, pJoueur->pseudo);
 }
 
@@ -18,15 +19,15 @@ bool personnageExiste(Joueur * pJoueur, char * nom, Personnage * pPerso, Personn
 	return pPerso != NULL && strcmp(nom, pPerso->nom);
 }
 
-bool nouveauJoueur(Joueur *pNouvJoueur) {
-	pNouvJoueur = (Joueur*)calloc(1, sizeof(Joueur));
-	return pNouvJoueur != NULL;
+bool nouveauJoueur(Joueur ** ppNouvJoueur) {
+	*ppNouvJoueur = (Joueur*)calloc(1, sizeof(Joueur));
+	return *ppNouvJoueur != NULL;
 }
 
-bool nouveauPersonnage(Personnage * pNouvPerso)
+bool nouveauPersonnage(Personnage ** ppNouvPerso)
 {
-	pNouvPerso = (Personnage*)calloc(1, sizeof(Personnage));
-	return pNouvPerso != NULL;
+	*ppNouvPerso = (Personnage*)calloc(1, sizeof(Personnage));
+	return *ppNouvPerso != NULL;
 }
 
 void libereJoueur(Joueur *pJoueur) {
@@ -37,11 +38,11 @@ void liberePersonnage(Personnage * pPerso) {
 	free(pPerso);
 }
 
-void ajouteJoueur(Joueur * pDebJoueur, char * pseudo, Joueur * pNouvJoueur, Joueur * pJoueur, Joueur * pSauvJoueur) {
+void ajouteJoueur(Joueur ** ppDebJoueur, char * pseudo, Joueur * pNouvJoueur, Joueur * pJoueur, Joueur * pSauvJoueur) {
 	strcpy_s(pNouvJoueur->pseudo, NBCARMAXJOUEUR,pseudo);
 	pNouvJoueur->pDebPersonnages = NULL;
-	if (pJoueur == pDebJoueur) {
-		pDebJoueur = pNouvJoueur;
+	if (pJoueur == *ppDebJoueur) {
+		*ppDebJoueur = pNouvJoueur;
 	}
 	else {
 		pSauvJoueur->pSuiv = pJoueur;
@@ -62,7 +63,7 @@ void ajoutePersonnage(Joueur * pJoueur, char * nom, int points, Personnage * pNo
 	}
 }
 
-void supprimeJoueur(Joueur * pDebJoueur, Joueur * pJoueur, Joueur * pSauvJoueur) {
+void supprimeJoueur(Joueur ** ppDebJoueur, Joueur * pJoueur, Joueur * pSauvJoueur) {
 	Personnage *pPerso, *pSauvPerso;
 	pPerso = pJoueur->pDebPersonnages;
 	while (pPerso != NULL) {
@@ -71,8 +72,8 @@ void supprimeJoueur(Joueur * pDebJoueur, Joueur * pJoueur, Joueur * pSauvJoueur)
 		pPerso = pSauvPerso;
 	}
 
-	if (pJoueur = pDebJoueur) {
-		pDebJoueur = pJoueur->pSuiv;
+	if (pJoueur = *ppDebJoueur) {
+		*ppDebJoueur = pJoueur->pSuiv;
 	}
 	else {
 		pSauvJoueur->pSuiv = pJoueur->pSuiv;

@@ -20,9 +20,5 @@ void main(void) {
 		dialogue(pLexique);
 		libererLexique(pLexique);
 	}
-
-	
-
-
-
+	system("pause");
 }
