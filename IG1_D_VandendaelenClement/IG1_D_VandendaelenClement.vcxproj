@@ -123,6 +123,7 @@
     <ClInclude Include="Lexique.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Fichiers.c" />
     <ClCompile Include="Gestion.c" />
     <ClCompile Include="Interface.c" />
     <ClCompile Include="Principale.c" />

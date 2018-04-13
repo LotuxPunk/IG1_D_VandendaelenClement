@@ -40,6 +40,9 @@
     <ClCompile Include="Gestion.c">
       <Filter>Fichiers sources</Filter>
     </ClCompile>
+    <ClCompile Include="Fichiers.c">
+      <Filter>Fichiers sources</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <Object Include="Lexique.obj">

@@ -19,3 +19,4 @@
 5006 Le joueur existe deja.
 5007 Le personnage existe deja.
 5008 Le joueur n'est pas présent.
+5009 Le fichier est inexistant.

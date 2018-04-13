@@ -3,6 +3,7 @@
 
 #define NBCARMAXJOUEUR 30
 #define NBCARMAXPERSONNAGE 30
+#define NOMFICHIER "joueurs.dat"
 
 typedef enum codeErreur CodeErreur;
 enum codeErreur { 
@@ -14,7 +15,8 @@ enum codeErreur {
 	PSEUDO_NON_VALIDE,
 	JOUEUR_DEJA_PRESENT,
 	PERSONNAGE_DEJA_PRESENT,
-	JOUEUR_ABSENT
+	JOUEUR_ABSENT,
+	FICHIER_INEXISTANT
 };
 
 typedef enum reponse Reponse;
@@ -46,6 +48,18 @@ struct joueur {
 	char pseudo[NBCARMAXJOUEUR];
 	Personnage *pDebPersonnages;
 	Joueur *pSuiv;
+};
+
+typedef struct joueurFi JoueurFi;
+struct joueurFi {
+	char pseudo[NBCARMAXJOUEUR];
+	int nbrPerso;
+};
+
+typedef struct persoFi PersoFi;
+struct persoFi {
+	char nom[NBCARMAXPERSONNAGE];
+	int points;
 };
 
 #endif // !CONSTANTES_H

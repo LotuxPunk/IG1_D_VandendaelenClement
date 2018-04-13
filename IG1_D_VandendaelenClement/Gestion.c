@@ -81,3 +81,44 @@ void supprimeJoueur(Joueur ** ppDebJoueur, Joueur * pJoueur, Joueur * pSauvJoueu
 	libereJoueur(pJoueur);
 }
 
+void listeJoueurs(Joueur *pDebJoueur) {
+	Joueur *pJoueur = pDebJoueur;
+	Personnage *pPerso;
+	while (pJoueur != NULL) {
+		pPerso = pJoueur->pDebPersonnages;
+		puts(pJoueur->pseudo);
+		while (pPerso != NULL) {
+			puts(pPerso->nom);
+			pPerso = pPerso->pSuiv;
+		}
+		puts("-----");
+		pJoueur = pJoueur->pSuiv;
+
+	}
+}
+
+int nbPersonnages(Joueur *pJoueur) {
+	Personnage *pPerso = pJoueur->pDebPersonnages;
+	int nbPerso = 0;
+	while (pPerso != NULL) {
+		nbPerso++;
+		pPerso = pPerso->pSuiv;
+	}
+	return nbPerso;
+}
+
+void libèreJoueursPersonnages(Joueur *pDebJoueurs) {
+	Joueur *pJoueur = pDebJoueurs, *pSauveJoueur;
+	Personnage *pPerso, *pSauvePerso;
+	while (pJoueur != NULL) {
+		pSauveJoueur = pJoueur;
+		pJoueur = pJoueur->pSuiv;
+		pPerso = pSauveJoueur->pDebPersonnages;
+		while (pPerso != NULL) {
+			pSauvePerso = pPerso;
+			pPerso = pPerso->pSuiv;
+			liberePersonnage(pSauvePerso);
+		}
+		libereJoueur(pSauveJoueur);
+	}
+}
