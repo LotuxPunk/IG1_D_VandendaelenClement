@@ -1,7 +1,7 @@
 #include "General.h"
 
-bool joueurExiste(Joueur * pDebJoueur, char * pseudo, Joueur ** ppJoueur, Joueur ** ppSauvJoueur) {
-	Joueur *pJoueur = pDebJoueur;
+bool joueurExiste(Joueur * pDebJoueurs, char * pseudo, Joueur ** ppJoueur, Joueur ** ppSauvJoueur) {
+	Joueur *pJoueur = pDebJoueurs;
 	while (pJoueur != NULL && strcmp(pseudo, pJoueur->pseudo)) {
 		*ppSauvJoueur = pJoueur;
 		pJoueur = pJoueur->pSuiv;
@@ -38,11 +38,11 @@ void liberePersonnage(Personnage * pPerso) {
 	free(pPerso);
 }
 
-void ajouteJoueur(Joueur ** ppDebJoueur, char * pseudo, Joueur * pNouvJoueur, Joueur * pJoueur, Joueur * pSauvJoueur) {
+void ajouteJoueur(Joueur ** ppDebJoueurs, char * pseudo, Joueur * pNouvJoueur, Joueur * pJoueur, Joueur * pSauvJoueur) {
 	strcpy_s(pNouvJoueur->pseudo, NBCARMAXJOUEUR,pseudo);
 	pNouvJoueur->pDebPersonnages = NULL;
-	if (pJoueur == *ppDebJoueur) {
-		*ppDebJoueur = pNouvJoueur;
+	if (pJoueur == *ppDebJoueurs) {
+		*ppDebJoueurs = pNouvJoueur;
 	}
 	else {
 		pSauvJoueur->pSuiv = pJoueur;
@@ -63,7 +63,7 @@ void ajoutePersonnage(Joueur * pJoueur, char * nom, int points, Personnage * pNo
 	}
 }
 
-void supprimeJoueur(Joueur ** ppDebJoueur, Joueur * pJoueur, Joueur * pSauvJoueur) {
+void supprimeJoueur(Joueur ** ppDebJoueurs, Joueur * pJoueur, Joueur * pSauvJoueur) {
 	Personnage *pPerso, *pSauvPerso;
 	pPerso = pJoueur->pDebPersonnages;
 	while (pPerso != NULL) {
@@ -72,7 +72,7 @@ void supprimeJoueur(Joueur ** ppDebJoueur, Joueur * pJoueur, Joueur * pSauvJoueu
 		pPerso = pSauvPerso;
 	}
 
-	if (pJoueur = *ppDebJoueur) {
+	if (pJoueur = *ppDebJoueurs) {
 		*ppDebJoueur = pJoueur->pSuiv;
 	}
 	else {
@@ -81,8 +81,8 @@ void supprimeJoueur(Joueur ** ppDebJoueur, Joueur * pJoueur, Joueur * pSauvJoueu
 	libereJoueur(pJoueur);
 }
 
-void listeJoueurs(Joueur *pDebJoueur) {
-	Joueur *pJoueur = pDebJoueur;
+void listeJoueurs(Joueur *pDebJoueurs) {
+	Joueur *pJoueur = pDebJoueurs;
 	Personnage *pPerso;
 	while (pJoueur != NULL) {
 		pPerso = pJoueur->pDebPersonnages;
