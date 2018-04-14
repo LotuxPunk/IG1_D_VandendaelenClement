@@ -73,7 +73,7 @@ void supprimeJoueur(Joueur ** ppDebJoueurs, Joueur * pJoueur, Joueur * pSauvJoue
 	}
 
 	if (pJoueur = *ppDebJoueurs) {
-		*ppDebJoueur = pJoueur->pSuiv;
+		*ppDebJoueurs = pJoueur->pSuiv;
 	}
 	else {
 		pSauvJoueur->pSuiv = pJoueur->pSuiv;

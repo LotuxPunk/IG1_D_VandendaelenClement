@@ -1,7 +1,7 @@
 1000 Menu
 1001 Charger la liste des joueurs inscrits
 1002 Ajouter un joueur et ses personnages
-1003 Ajouter un personnage à un joueur
+1003 Ajouter un personnage a un joueur
 1004 Supprimer un joueur
 1005 Afficher les joueurs et ses personnages
 1006 Sauver les joueurs et les personnages
@@ -10,6 +10,20 @@
 2002 Nom : 
 2102 Choix :
 2201 Ajouter un autre personnage ? (1. Oui, 2. Non) :
+3000 Titre principal
+3001 Titre joueur
+3002 Titre personnage
+3003 Titre affichage
+3101 Ajouter un joueur
+3102 Supprimer un joueur
+3201 Ajouter un personnage
+3202 Supprimer un personnage
+3301 Liste des joueurs
+3401 Chargement de joueurs.dat
+3402 Sauvegarde dans joueurs.dat
+3403 Aucun joueur en memoire
+3404 Aucun personnage pour ce joueur
+3405 Modifications annulees
 5000 Aucune erreur
 5001 Joueur deja existant !
 5002 Allocation memoire
