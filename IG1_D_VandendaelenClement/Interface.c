@@ -123,12 +123,14 @@ CodeErreur ajouterJoueurPersonnage(Message * pLexique, Joueur * pDebJoueur) {
 	else {
 		char *pseudo;
 		Joueur *pJoueur = NULL, *pSauvJoueur = NULL;
+		bool jExiste;
 		erreur = PAS_D_ERREUR;
 		afficherTitre(pLexique, TITRE_JOUEUR_AJOUT);
 		
 		pseudo = pseudoObtenu(pLexique);
 		
-		if (joueurExiste(pDebJoueur, pseudo, &pJoueur, &pSauvJoueur)) {
+		jExiste = joueurExiste(pDebJoueur, pseudo, &pJoueur, &pSauvJoueur);
+		if (jExiste) {
 			libereJoueur(pJoueur);
 			erreur = JOUEUR_DEJA_PRESENT;
 		}
@@ -175,8 +177,8 @@ char * pseudoObtenu(Message *pLexique) {
 	char pseudo[NBCARMAXJOUEUR];
 	do {
 		afficherMessage(pLexique, OBT_PSEUDO);
-		//gets_s(pseudo, NBCARMAXJOUEUR);
-		scanf_s("%s", &pseudo);
+		gets_s(pseudo, NBCARMAXJOUEUR-1);
+		//scanf_s("%s", &pseudo);
 		pseudoValide = strlen(pseudo) > 0 && pseudo[0] >= 'A' && pseudo[0] <= 'Z';
 		if (!pseudoValide) {
 			afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + PSEUDO_NON_VALIDE);
