@@ -8,6 +8,7 @@
 1007 Quitter
 2001 Pseudo :
 2002 Nom : 
+2003 Points :
 2102 Choix :
 2201 Ajouter un autre personnage ? (1. Oui, 2. Non) :
 3000 Titre principal

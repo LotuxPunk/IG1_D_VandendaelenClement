@@ -21,7 +21,7 @@ enum codeErreur {
 
 typedef enum reponse Reponse;
 enum reponse {
-	OUI,
+	OUI = 1,
 	NON
 };
 

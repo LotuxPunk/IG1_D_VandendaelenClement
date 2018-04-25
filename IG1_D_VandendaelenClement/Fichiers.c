@@ -27,6 +27,7 @@ CodeErreur sauverJoueurs(Joueur *pDebJoueurs) {
 		}
 		fclose(pFichier);
 	}
+	return erreur;
 }
 
 CodeErreur chargerJoueurs(Joueur **pDebJoueurs) {
@@ -75,6 +76,7 @@ CodeErreur chargerJoueurs(Joueur **pDebJoueurs) {
 		}
 		fclose(pFichier);
 	}
+	return erreur;
 }
 
 CodeErreur fichierExiste(void) {

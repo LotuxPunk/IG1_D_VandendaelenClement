@@ -22,7 +22,7 @@ CodeErreur sauverJoueurPersonnages(Message *pLexique, Joueur *pDebJoueurs);
 
 //Gestion
 bool joueurExiste(Joueur *pDebJoueurs, char *pseudo, Joueur **ppJoueur, Joueur **ppSauvJoueur);
-bool personnageExiste(Joueur *pJoueur, char *nom, Personnage *pPerso, Personnage *pSauvPerso);
+bool personnageExiste(Joueur *pJoueur, char nom[], Personnage **pPerso, Personnage **pSauvPerso);
 bool nouveauJoueur(Joueur **ppNouvJoueur);
 bool nouveauPersonnage(Personnage **ppNouvPerso);
 void libereJoueur(Joueur *pJoueur);

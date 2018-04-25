@@ -1,22 +1,22 @@
 #include "General.h"
 
-bool joueurExiste(Joueur * pDebJoueurs, char * pseudo, Joueur ** ppJoueur, Joueur ** ppSauvJoueur) {
+bool joueurExiste(Joueur * pDebJoueurs, char pseudo[], Joueur ** ppJoueur, Joueur ** ppSauvJoueur) {
 	Joueur *pJoueur = pDebJoueurs;
-	while (pJoueur != NULL && strcmp(pseudo, pJoueur->pseudo)) {
+	while (pJoueur != NULL && strcmp(pseudo, pJoueur->pseudo) > 0) {
 		*ppSauvJoueur = pJoueur;
 		pJoueur = pJoueur->pSuiv;
 	}
 	*ppJoueur = pJoueur;
-	return pJoueur != NULL && strcmp(pseudo, pJoueur->pseudo);
+	return pJoueur != NULL && strcmp(pseudo, pJoueur->pseudo) > 0;
 }
 
-bool personnageExiste(Joueur * pJoueur, char * nom, Personnage * pPerso, Personnage * pSauvPerso) {
-	pPerso = pJoueur->pDebPersonnages;
-	while (pPerso != NULL && strcmp(nom, pPerso->nom)) {
-		pSauvPerso = pPerso;
-		pPerso = pPerso->pSuiv;
+bool personnageExiste(Joueur * pJoueur, char nom[], Personnage ** pPerso, Personnage ** pSauvPerso) {
+	*pPerso = pJoueur->pDebPersonnages;
+	while ((*pPerso) != NULL && strcmp(nom, (*pPerso)->nom)) {
+		*pSauvPerso = *pPerso;
+		*pPerso = (*pPerso)->pSuiv;
 	}
-	return pPerso != NULL && strcmp(nom, pPerso->nom);
+	return *pPerso != NULL && strcmp(nom, (*pPerso)->nom) > 0;
 }
 
 bool nouveauJoueur(Joueur ** ppNouvJoueur) {
@@ -38,7 +38,7 @@ void liberePersonnage(Personnage * pPerso) {
 	free(pPerso);
 }
 
-void ajouteJoueur(Joueur ** ppDebJoueurs, char * pseudo, Joueur * pNouvJoueur, Joueur * pJoueur, Joueur * pSauvJoueur) {
+void ajouteJoueur(Joueur ** ppDebJoueurs, char *pseudo, Joueur * pNouvJoueur, Joueur * pJoueur, Joueur * pSauvJoueur) {
 	strcpy_s(pNouvJoueur->pseudo, NBCARMAXJOUEUR,pseudo);
 	pNouvJoueur->pDebPersonnages = NULL;
 	if (pJoueur == *ppDebJoueurs) {

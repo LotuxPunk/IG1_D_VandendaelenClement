@@ -1,8 +1,8 @@
 #include "General.h"
 
 Reponse reponseObtenue(Message *pLexique);
-void nomObtenu(Message *pLexique, char **nom);
-char * pseudoObtenu(Message *pLexique);
+void nomObtenu(Message *pLexique, char nom[]);
+void pseudoObtenu(Message *pLexique, char pseudo[]);
 int pointsObtenu(Message *pLexique);
 
 
@@ -33,6 +33,7 @@ void dialogue(Message * pLexique) {
 	CodeErreur erreur = PAS_D_ERREUR;
 	Joueur *pDebJoueurs = NULL;
 	Choix choix = choixObtenu(pLexique, MENU_PRINCIPAL);
+	getchar();
 
 	while (choix != QUITTER) {
 		switch (choix) {
@@ -96,12 +97,12 @@ CodeErreur ajouterPersonnage(Message * pLexique, Joueur * pDebJoueurs) {
 		erreur = ALLOCATION_MEMOIRE;
 	}
 	else {
-		char *pseudo;
+		char pseudo[NBCARMAXJOUEUR];
 		Joueur *pJoueur, *pSauveJoueur;
 		bool joueurExi;
 		erreur = PAS_D_ERREUR;
 		afficherTitre(pLexique, TITRE_PERSO_AJOUT);
-		pseudo = pseudoObtenu(pLexique);
+		pseudoObtenu(pLexique, pseudo);
 		joueurExi = joueurExiste(pDebJoueurs,pseudo,&pJoueur, &pSauveJoueur);
 		if (!joueurExi) {
 			erreur = JOUEUR_ABSENT;
@@ -121,13 +122,13 @@ CodeErreur ajouterJoueurPersonnage(Message * pLexique, Joueur * pDebJoueur) {
 		erreur = ALLOCATION_MEMOIRE;
 	}
 	else {
-		char *pseudo;
+		char pseudo[NBCARMAXJOUEUR];
 		Joueur *pJoueur = NULL, *pSauvJoueur = NULL;
 		bool jExiste;
 		erreur = PAS_D_ERREUR;
 		afficherTitre(pLexique, TITRE_JOUEUR_AJOUT);
 		
-		pseudo = pseudoObtenu(pLexique);
+		pseudoObtenu(pLexique, pseudo);
 		
 		jExiste = joueurExiste(pDebJoueur, pseudo, &pJoueur, &pSauvJoueur);
 		if (jExiste) {
@@ -140,7 +141,7 @@ CodeErreur ajouterJoueurPersonnage(Message * pLexique, Joueur * pDebJoueur) {
 			do {
 				Personnage *pNouvPerso = NULL;
 				allocationOk = nouveauPersonnage(&pNouvPerso);
-				if (allocationOk) {
+				if (!allocationOk) {
 					erreur = ALLOCATION_MEMOIRE;
 				}
 				else {
@@ -154,12 +155,12 @@ CodeErreur ajouterJoueurPersonnage(Message * pLexique, Joueur * pDebJoueur) {
 
 CodeErreur ajouterPersonnageAJoueur(Message *pLexique, Joueur *pJoueur, Personnage *pNouvPerso) {
 	CodeErreur erreur = PAS_D_ERREUR;
-	char * nom = "";
+	char nom[NBCARMAXJOUEUR] = "";
 	Personnage *pPerso = NULL, *pSauvePerso = NULL;
 	bool persoExiste;
 
-	nomObtenu(pLexique, &nom);
-	persoExiste = personnageExiste(pJoueur, nom, pPerso, pSauvePerso);
+	nomObtenu(pLexique, nom);
+	persoExiste = personnageExiste(pJoueur, nom, &pPerso, &pSauvePerso);
 	if (persoExiste) {
 		erreur = PERSONNAGE_DEJA_PRESENT;
 		afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + erreur);
@@ -172,19 +173,17 @@ CodeErreur ajouterPersonnageAJoueur(Message *pLexique, Joueur *pJoueur, Personna
 	return erreur;
 }
 
-char * pseudoObtenu(Message *pLexique) {
+void pseudoObtenu(Message *pLexique, char pseudo[]) {
 	bool pseudoValide;
-	char pseudo[NBCARMAXJOUEUR];
 	do {
 		afficherMessage(pLexique, OBT_PSEUDO);
-		gets_s(pseudo, NBCARMAXJOUEUR-1);
-		//scanf_s("%s", &pseudo);
+		//gets_s(pseudo, NBCARMAXJOUEUR-1);
+		scanf_s("%s", pseudo, NBCARMAXJOUEUR);
 		pseudoValide = strlen(pseudo) > 0 && pseudo[0] >= 'A' && pseudo[0] <= 'Z';
 		if (!pseudoValide) {
 			afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + PSEUDO_NON_VALIDE);
 		}
 	} while (!pseudoValide);
-	return pseudo;
 }
 
 Reponse reponseObtenue(Message *pLexique) {
@@ -199,11 +198,12 @@ Reponse reponseObtenue(Message *pLexique) {
 	return reponse;
 }
 
-void nomObtenu(Message * pLexique, char **nom){
+void nomObtenu(Message * pLexique, char nom[]){
 	do {
 		afficherMessage(pLexique, OBT_NOM);
-		gets_s(*nom, NBCARMAXJOUEUR);
-	} while (strlen(*nom) > NBCARMAXJOUEUR);
+		scanf_s("%s", nom, NBCARMAXPERSONNAGE);
+		//gets_s(nom, NBCARMAXJOUEUR);
+	} while (strlen(nom) > NBCARMAXPERSONNAGE);
 }
 
 int pointsObtenu(Message *pLexique) {
@@ -211,16 +211,16 @@ int pointsObtenu(Message *pLexique) {
 	do {
 		afficherMessage(pLexique, OBT_POINTS);
 		scanf_s("%d", &points);
-	} while (points >= 0);
+	} while (points <= 0);
 	return points;
 }
 
 CodeErreur supprimerJoueurPersonnages(Message *pLexique, Joueur ** ppDebJoueurs) {
-	char *pseudo;
+	char pseudo[NBCARMAXJOUEUR];
 	bool jExiste;
 	Joueur *pJoueur = NULL, *pSauveJoueur = NULL;
 	afficherTitre(pLexique, TITRE_JOUEUR_SUPPR);
-	pseudo = pseudoObtenu(pLexique);
+	pseudoObtenu(pLexique, pseudo);
 	jExiste = joueurExiste(*ppDebJoueurs, pseudo, &pJoueur, &pSauveJoueur);
 	if (!jExiste) {
 		return JOUEUR_ABSENT;
