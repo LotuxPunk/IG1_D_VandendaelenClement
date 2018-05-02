@@ -27,7 +27,7 @@
 typedef enum numMessage NumMessage;
 enum numMessage {
 	// Menu
-	MENU_PRINCIPAL = 1001,
+	MENU_PRINCIPAL = 1000,
 	// Message d'obtention
 	OBT_PSEUDO = 2001,
 	OBT_NOM,

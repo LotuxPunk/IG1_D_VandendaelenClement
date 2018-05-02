@@ -13,15 +13,15 @@
 Choix choixObtenu(Message *pLexique, NumMessage numMenu);
 void dialogue(Message *pLexique);
 CodeErreur chargerJoueursPersonnages(Message *pLexique, Joueur **pDebJoueurs);
-CodeErreur ajouterPersonnage(Message *pLexique, Joueur *pDebJoueurs);
-CodeErreur ajouterJoueurPersonnage(Message *pLexique, Joueur *pDebJoueurs);
+CodeErreur ajouterPersonnage(Message *pLexique, Joueur **ppDebJoueurs);
+CodeErreur ajouterJoueurPersonnage(Message *pLexique, Joueur **ppDebJoueurs);
 CodeErreur ajouterPersonnageAJoueur(pLexique, pNouvJoueur, pNouvPerso);
 CodeErreur supprimerJoueurPersonnages(Message *pLexique, Joueur ** ppDebJoueurs);
 void afficherJoueursPersonnages(Message *pLexique, Joueur *pDebJoueurs);
 CodeErreur sauverJoueurPersonnages(Message *pLexique, Joueur *pDebJoueurs);
 
 //Gestion
-bool joueurExiste(Joueur *pDebJoueurs, char *pseudo, Joueur **ppJoueur, Joueur **ppSauvJoueur);
+bool joueurExiste(Joueur *pDebJoueurs, char pseudo[], Joueur **ppJoueur, Joueur **ppSauvJoueur);
 bool personnageExiste(Joueur *pJoueur, char nom[], Personnage **pPerso, Personnage **pSauvPerso);
 bool nouveauJoueur(Joueur **ppNouvJoueur);
 bool nouveauPersonnage(Personnage **ppNouvPerso);

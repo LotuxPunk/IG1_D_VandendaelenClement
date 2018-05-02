@@ -31,7 +31,7 @@ CodeErreur sauverJoueurs(Joueur *pDebJoueurs) {
 }
 
 CodeErreur chargerJoueurs(Joueur **pDebJoueurs) {
-	CodeErreur erreur;
+	CodeErreur erreur = PAS_D_ERREUR;
 	FILE *pFichier;
 	fopen_s(&pFichier, NOMFICHIER, "rb");
 	if (pFichier == NULL) {
@@ -51,7 +51,6 @@ CodeErreur chargerJoueurs(Joueur **pDebJoueurs) {
 				erreur = ALLOCATION_MEMOIRE;
 			}
 			else {
-				erreur = PAS_D_ERREUR;
 				ajouteJoueur(pDebJoueurs, joueur.pseudo, pNouvJoueur, pJoueur, pSauveJoueur);
 				pSauveJoueur = pNouvJoueur;
 				pSauvPerso = NULL;
@@ -62,7 +61,6 @@ CodeErreur chargerJoueurs(Joueur **pDebJoueurs) {
 						erreur = ALLOCATION_MEMOIRE;
 					}
 					else {
-						erreur = PAS_D_ERREUR;
 						fread_s(&perso, sizeof(PersoFi), 1, 1, pFichier);
 						ajoutePersonnage(pJoueur, perso.nom, perso.points, pNouvPerso, pPerso, pSauvPerso);
 						pSauvPerso = pNouvPerso;
