@@ -137,11 +137,9 @@ CodeErreur ajouterJoueurPersonnage(Message * pLexique, Joueur ** pDebJoueur) {
 CodeErreur ajouterPersonnageAJoueur(Message *pLexique, Joueur *pJoueur, Personnage *pNouvPerso) {
 	char nom[NBCARMAXJOUEUR] = "";
 	Personnage *pPerso = NULL, *pSauvePerso = NULL;
-	bool persoExiste;
 
 	nomObtenu(pLexique, nom);
-	persoExiste = personnageExiste(pJoueur, nom, &pPerso, &pSauvePerso);
-	if (persoExiste) {
+	if (personnageExiste(pJoueur, nom, &pPerso, &pSauvePerso)) {
 		afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + PERSONNAGE_DEJA_PRESENT);
 		liberePersonnage(pNouvPerso);
 		return PERSONNAGE_DEJA_PRESENT;
@@ -170,7 +168,7 @@ Reponse reponseObtenue(Message *pLexique) {
 	do {
 		afficherMessage(pLexique, OBT_REPONSE);
 		scanf_s("%hd", &reponse);
-		if (reponse != OUI || reponse != NON) {
+		if (reponse != OUI && reponse != NON) {
 			afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + MAUVAIS_CHOIX);
 		}
 	} while (reponse != OUI && reponse != NON);
@@ -189,7 +187,7 @@ int pointsObtenu(Message *pLexique) {
 	do {
 		afficherMessage(pLexique, OBT_POINTS);
 		scanf_s("%d", &points);
-	} while (points <= 0);
+	} while (points < 0);
 	return points;
 }
 
