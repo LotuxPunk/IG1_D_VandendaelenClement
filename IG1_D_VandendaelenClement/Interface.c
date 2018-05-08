@@ -64,8 +64,7 @@ void dialogue(Message * pLexique) {
 }
 
 CodeErreur chargerJoueursPersonnages(Message * pLexique, Joueur ** pDebJoueurs) {
-	CodeErreur erreur = PAS_D_ERREUR;
-	erreur = fichierExiste();
+	CodeErreur erreur = fichierExiste();
 	if (erreur == PAS_D_ERREUR) {
 		afficherTitre(pLexique, CHARGEMENT);
 		if ((*pDebJoueurs) != NULL) {
@@ -73,11 +72,11 @@ CodeErreur chargerJoueursPersonnages(Message * pLexique, Joueur ** pDebJoueurs) 
 			Reponse reponse = reponseObtenue(pLexique);
 			if (reponse = OUI) {
 				libèreJoueursPersonnages(*pDebJoueurs);
-				erreur = chargerJoueurs(pDebJoueurs);
+				return chargerJoueurs(pDebJoueurs);
 			}
 		}
 		else {
-			erreur = chargerJoueurs(pDebJoueurs);
+			return chargerJoueurs(pDebJoueurs);
 		}
 	}
 	return erreur;
