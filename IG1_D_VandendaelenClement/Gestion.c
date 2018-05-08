@@ -45,7 +45,7 @@ void ajouteJoueur(Joueur ** ppDebJoueurs, char *pseudo, Joueur * pNouvJoueur, Jo
 		*ppDebJoueurs = pNouvJoueur;
 	}
 	else {
-		pSauvJoueur->pSuiv = pJoueur;
+		pSauvJoueur->pSuiv = pNouvJoueur;
 	}
 	pNouvJoueur->pSuiv = pJoueur;
 }

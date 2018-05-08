@@ -44,8 +44,8 @@ CodeErreur chargerJoueurs(Joueur **pDebJoueurs) {
 		JoueurFi joueur;
 		PersoFi perso;
 		bool allocationOk = true;
-		fread_s(&joueur, sizeof(JoueurFi), 1, 1, pFichier);
-		while (!EOF && allocationOk) {
+		fread_s(&joueur, sizeof(JoueurFi), sizeof(JoueurFi), 1, pFichier);
+		while (!feof(pFichier) && allocationOk) {
 			allocationOk = nouveauJoueur(&pNouvJoueur);
 			if (!allocationOk) {
 				erreur = ALLOCATION_MEMOIRE;
@@ -61,14 +61,14 @@ CodeErreur chargerJoueurs(Joueur **pDebJoueurs) {
 						erreur = ALLOCATION_MEMOIRE;
 					}
 					else {
-						fread_s(&perso, sizeof(PersoFi), 1, 1, pFichier);
-						ajoutePersonnage(pJoueur, perso.nom, perso.points, pNouvPerso, pPerso, pSauvPerso);
+						fread_s(&perso, sizeof(PersoFi), sizeof(PersoFi), 1, pFichier);
+						ajoutePersonnage(pNouvJoueur, perso.nom, perso.points, pNouvPerso, pPerso, pSauvPerso);
 						pSauvPerso = pNouvPerso;
 						iPerso++;
 					}
 				}
 				if (allocationOk) {
-					fread_s(&joueur, sizeof(JoueurFi), 1, 1, pFichier);
+					fread_s(&joueur, sizeof(JoueurFi), sizeof(JoueurFi), 1, pFichier);
 				}
 			}
 		}
