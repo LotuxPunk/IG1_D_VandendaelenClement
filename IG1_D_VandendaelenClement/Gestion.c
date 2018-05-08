@@ -84,11 +84,12 @@ void supprimeJoueur(Joueur ** ppDebJoueurs, Joueur * pJoueur, Joueur * pSauvJoue
 void listeJoueurs(Joueur *pDebJoueurs) {
 	Joueur *pJoueur = pDebJoueurs;
 	Personnage *pPerso;
+	
 	while (pJoueur != NULL) {
 		pPerso = pJoueur->pDebPersonnages;
-		puts(pJoueur->pseudo);
+		printf("** %s **\n", pJoueur->pseudo);
 		while (pPerso != NULL) {
-			puts(pPerso->nom);
+			printf("%s : %d\n", pPerso->nom, pPerso->points);
 			pPerso = pPerso->pSuiv;
 		}
 		puts("-----");
