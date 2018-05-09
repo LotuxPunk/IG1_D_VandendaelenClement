@@ -90,15 +90,12 @@ CodeErreur ajouterPersonnage(Message * pLexique, Joueur ** pDebJoueurs) {
 	else {
 		char pseudo[NBCARMAXJOUEUR];
 		Joueur *pJoueur, *pSauveJoueur;
-		bool joueurExi;
 		afficherTitre(pLexique, TITRE_PERSO_AJOUT);
 		pseudoObtenu(pLexique, pseudo);
-		joueurExi = joueurExiste(*pDebJoueurs, pseudo, &pJoueur, &pSauveJoueur);
-		if (!joueurExi) {
+		if (!joueurExiste(*pDebJoueurs, pseudo, &pJoueur, &pSauveJoueur)) {
 			return JOUEUR_ABSENT;
 		}
 		else {
-			Personnage *pNouvPerso = NULL;
 			return ajouterPersonnageAJoueur(pLexique, pJoueur, pNouvPerso);
 		}
 	}

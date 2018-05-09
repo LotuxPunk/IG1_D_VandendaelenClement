@@ -38,7 +38,7 @@ void liberePersonnage(Personnage * pPerso) {
 	free(pPerso);
 }
 
-void ajouteJoueur(Joueur ** ppDebJoueurs, char *pseudo, Joueur * pNouvJoueur, Joueur * pJoueur, Joueur * pSauvJoueur) {
+void ajouteJoueur(Joueur ** ppDebJoueurs, char pseudo[], Joueur * pNouvJoueur, Joueur * pJoueur, Joueur * pSauvJoueur) {
 	strcpy_s(pNouvJoueur->pseudo, NBCARMAXJOUEUR,pseudo);
 	pNouvJoueur->pDebPersonnages = NULL;
 	if (pJoueur == *ppDebJoueurs) {
@@ -50,7 +50,7 @@ void ajouteJoueur(Joueur ** ppDebJoueurs, char *pseudo, Joueur * pNouvJoueur, Jo
 	pNouvJoueur->pSuiv = pJoueur;
 }
 
-void ajoutePersonnage(Joueur * pJoueur, char * nom, int points, Personnage * pNouvPerso, Personnage * pPerso, Personnage * pSauvPerso) {
+void ajoutePersonnage(Joueur * pJoueur, char nom[], int points, Personnage * pNouvPerso, Personnage * pPerso, Personnage * pSauvPerso) {
 	strcpy_s(pNouvPerso->nom,NBCARMAXPERSONNAGE, nom);
 	pNouvPerso->points = points;
 	pNouvPerso->pSuiv = NULL;
