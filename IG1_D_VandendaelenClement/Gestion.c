@@ -7,7 +7,7 @@ bool joueurExiste(Joueur * pDebJoueurs, char pseudo[], Joueur ** ppJoueur, Joueu
 		pJoueur = pJoueur->pSuiv;
 	}
 	*ppJoueur = pJoueur;
-	return pJoueur != NULL && strcmp(pseudo, pJoueur->pseudo) > 0;
+	return *ppJoueur != NULL && strcmp(pseudo, (*ppJoueur)->pseudo) == 0;
 }
 
 bool personnageExiste(Joueur * pJoueur, char nom[], Personnage ** pPerso, Personnage ** pSauvPerso) {
@@ -16,7 +16,7 @@ bool personnageExiste(Joueur * pJoueur, char nom[], Personnage ** pPerso, Person
 		*pSauvPerso = *pPerso;
 		*pPerso = (*pPerso)->pSuiv;
 	}
-	return *pPerso != NULL && strcmp(nom, (*pPerso)->nom) > 0;
+	return *pPerso != NULL && strcmp(nom, (*pPerso)->nom) == 0;
 }
 
 bool nouveauJoueur(Joueur ** ppNouvJoueur) {
@@ -72,7 +72,7 @@ void supprimeJoueur(Joueur ** ppDebJoueurs, Joueur * pJoueur, Joueur * pSauvJoue
 		pPerso = pSauvPerso;
 	}
 
-	if (pJoueur = *ppDebJoueurs) {
+	if (pJoueur == (*ppDebJoueurs)) {
 		*ppDebJoueurs = pJoueur->pSuiv;
 	}
 	else {

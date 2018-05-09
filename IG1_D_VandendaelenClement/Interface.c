@@ -1,6 +1,6 @@
 #include "General.h"
 
-Reponse reponseObtenue(Message *pLexique);
+Reponse reponseObtenue(Message *pLexique, NumMessage message);
 void nomObtenu(Message *pLexique, char nom[]);
 void pseudoObtenu(Message *pLexique, char pseudo[]);
 int pointsObtenu(Message *pLexique);
@@ -69,7 +69,7 @@ CodeErreur chargerJoueursPersonnages(Message * pLexique, Joueur ** pDebJoueurs) 
 		afficherTitre(pLexique, CHARGEMENT);
 		if ((*pDebJoueurs) != NULL) {
 			afficherMessage(pLexique, MODIFICATIONS_ANNULEES);
-			Reponse reponse = reponseObtenue(pLexique);
+			Reponse reponse = reponseObtenue(pLexique, ECRASER_LISTE);
 			if (reponse = OUI) {
 				libèreJoueursPersonnages(*pDebJoueurs);
 				return chargerJoueurs(pDebJoueurs);
@@ -127,7 +127,7 @@ CodeErreur ajouterJoueurPersonnage(Message * pLexique, Joueur ** pDebJoueur) {
 				if(!nouveauPersonnage(&pNouvPerso))
 					return ALLOCATION_MEMOIRE;
 				ajouterPersonnageAJoueur(pLexique, pNouvJoueur, pNouvPerso);
-			} while (reponseObtenue(pLexique) == OUI);
+			} while (reponseObtenue(pLexique, OBT_REPONSE) == OUI);
 			return PAS_D_ERREUR;
 		}
 	}
@@ -162,10 +162,10 @@ void pseudoObtenu(Message *pLexique, char pseudo[]) {
 	} while (!pseudoValide);
 }
 
-Reponse reponseObtenue(Message *pLexique) {
+Reponse reponseObtenue(Message *pLexique, NumMessage message) {
 	short reponse;
 	do {
-		afficherMessage(pLexique, OBT_REPONSE);
+		afficherMessage(pLexique, message);
 		scanf_s("%hd", &reponse);
 		if (reponse != OUI && reponse != NON) {
 			afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + MAUVAIS_CHOIX);
