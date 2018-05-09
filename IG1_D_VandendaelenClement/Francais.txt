@@ -11,6 +11,7 @@
 2003 Points :
 2102 Choix :
 2201 Ajouter un autre personnage ? (1. Oui, 2. Non) :
+2202 Ecraser la liste actuelle et en charger une autre ? (1. Oui, 2. Non) :
 3000 Titre principal
 3001 Titre joueur
 3002 Titre personnage

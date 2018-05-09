@@ -1,0 +1,38 @@
+1000 Menu
+1001 Load the list of registered players
+1002 Add a player and his characters
+1003 Add a character to a player
+1004 Delete a player
+1005 Show players and their characters
+1006 Save players and characters
+1007 Exit
+2001 Nickname :
+2002 Name : 
+2003 Points :
+2102 Choice :
+2201 Add another character? (1. Yes, 2. No) :
+2202 Overwrite the current list and load another? (1. Yes, 2. No) :
+3000 Principal Title
+3001 Player title
+3002 Character title
+3003 Display title
+3101 Add a player
+3102 Delete a player
+3201 Add a character
+3202 Delete a character
+3301 Players List
+3401 Loading joueurs.dat
+3402 Save in joueurs.dat
+3403 No player in memory
+3404 No character for this player
+3405 Cancelled amendments
+5000 No errors
+5001 Already existing player!
+5002 Memory allowance
+5003 Error when opening the file
+5004 Bad choice, do it again!
+5005 Your nickname must contain at least one letter and begin with a capital letter.
+5006 The player already exists.
+5007 The character already exists.
+5008 The player is not present.
+5009 The file is non-existent.

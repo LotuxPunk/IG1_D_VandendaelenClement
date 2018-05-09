@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Text Include="English.txt" />
     <Text Include="Francais.txt" />
   </ItemGroup>
   <ItemGroup>

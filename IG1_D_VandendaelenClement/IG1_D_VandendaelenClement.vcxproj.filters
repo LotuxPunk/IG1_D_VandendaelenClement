@@ -18,6 +18,9 @@
     <Text Include="Francais.txt">
       <Filter>Fichiers de ressources</Filter>
     </Text>
+    <Text Include="English.txt">
+      <Filter>Fichiers de ressources</Filter>
+    </Text>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constantes.h">
