@@ -1,11 +1,10 @@
 #include "General.h"
 
 CodeErreur sauverJoueurs(Joueur *pDebJoueurs) {
-	CodeErreur erreur = PAS_D_ERREUR;
 	FILE *pFichier;
 	fopen_s(&pFichier, NOMFICHIER, "wb");
 	if (pFichier == NULL) {
-		erreur = FICHIER_INEXISTANT;
+		return FICHIER_INEXISTANT;
 	}
 	else {
 		Joueur *pJoueur = pDebJoueurs;
@@ -27,15 +26,14 @@ CodeErreur sauverJoueurs(Joueur *pDebJoueurs) {
 		}
 		fclose(pFichier);
 	}
-	return erreur;
+	return PAS_D_ERREUR;
 }
 
 CodeErreur chargerJoueurs(Joueur **pDebJoueurs) {
-	CodeErreur erreur = PAS_D_ERREUR;
 	FILE *pFichier;
 	fopen_s(&pFichier, NOMFICHIER, "rb");
 	if (pFichier == NULL) {
-		erreur = FICHIER_INEXISTANT;
+		return FICHIER_INEXISTANT;
 	}
 	else {
 		Joueur *pJoueur = NULL, *pSauveJoueur = NULL, *pNouvJoueur;
@@ -48,7 +46,7 @@ CodeErreur chargerJoueurs(Joueur **pDebJoueurs) {
 		while (!feof(pFichier) && allocationOk) {
 			allocationOk = nouveauJoueur(&pNouvJoueur);
 			if (!allocationOk) {
-				erreur = ALLOCATION_MEMOIRE;
+				return ALLOCATION_MEMOIRE;
 			}
 			else {
 				ajouteJoueur(pDebJoueurs, joueur.pseudo, pNouvJoueur, pJoueur, pSauveJoueur);
@@ -58,7 +56,7 @@ CodeErreur chargerJoueurs(Joueur **pDebJoueurs) {
 				while (iPerso < joueur.nbrPerso && allocationOk) {
 					allocationOk = nouveauPersonnage(&pNouvPerso);
 					if (!allocationOk) {
-						erreur = ALLOCATION_MEMOIRE;
+						return ALLOCATION_MEMOIRE;
 					}
 					else {
 						fread_s(&perso, sizeof(PersoFi), sizeof(PersoFi), 1, pFichier);
@@ -74,18 +72,17 @@ CodeErreur chargerJoueurs(Joueur **pDebJoueurs) {
 		}
 		fclose(pFichier);
 	}
-	return erreur;
+	return PAS_D_ERREUR;
 }
 
 CodeErreur fichierExiste(void) {
-	CodeErreur erreur = PAS_D_ERREUR;
 	FILE *pFichier;
 	fopen_s(&pFichier, NOMFICHIER, "rb");
 	if (pFichier == NULL) {
-		erreur = FICHIER_INEXISTANT;
+		return FICHIER_INEXISTANT;
 	}
 	else {
 		fclose(pFichier);
 	}
-	return erreur;
+	return PAS_D_ERREUR;
 }

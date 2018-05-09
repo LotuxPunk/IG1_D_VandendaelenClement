@@ -72,7 +72,7 @@ CodeErreur chargerJoueursPersonnages(Message * pLexique, Joueur ** pDebJoueurs) 
 			Reponse reponse = reponseObtenue(pLexique, ECRASER_LISTE);
 			if (reponse = OUI) {
 				libèreJoueursPersonnages(*pDebJoueurs);
-				return chargerJoueurs(pDebJoueurs);
+				erreur = chargerJoueurs(pDebJoueurs);
 			}
 		}
 		else {
