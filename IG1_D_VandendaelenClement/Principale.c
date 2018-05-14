@@ -7,12 +7,12 @@ void main(void) {
 	erreur = chargerLexique(&pLexique);
 	if (erreur != PAS_D_ERREUR) {
 		if (erreur == ALLOCATION_MEMOIRE) {
-			printf("Erreur mémoire / Memory error");
+			puts("Erreur mémoire / Memory error");
 			libererLexique(pLexique);
 		}
 		else {
 			if (erreur == OUVERTURE_FICHIER) {
-				printf("Erreur ouverture fichier / File opening error");
+				puts("Erreur ouverture fichier / File opening error");
 			}
 		}
 	}

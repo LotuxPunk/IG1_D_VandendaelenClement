@@ -29,10 +29,9 @@
 5000 No errors
 5001 Already existing player!
 5002 Memory allowance
-5003 Error when opening the file
-5004 Bad choice, do it again!
-5005 Your nickname must contain at least one letter and begin with a capital letter.
-5006 The player already exists.
-5007 The character already exists.
-5008 The player is not present.
-5009 The file is non-existent.
+5003 Bad choice, do it again!
+5004 Your nickname must contain at least one letter and begin with a capital letter.
+5005 The player already exists.
+5006 The character already exists.
+5007 The player is not present.
+5008 The file is non-existent.

@@ -29,10 +29,9 @@
 5000 Aucune erreur
 5001 Joueur deja existant !
 5002 Allocation memoire
-5003 Erreur a l'ouverture du fichier
-5004 Mauvais choix, recommencez !
-5005 Votre pseudo doit comporter au moins une lettre et commencer par une majuscule.
-5006 Le joueur existe deja.
-5007 Le personnage existe deja.
-5008 Le joueur n'est pas present.
-5009 Le fichier est inexistant.
+5003 Mauvais choix, recommencez !
+5004 Votre pseudo doit comporter au moins une lettre et commencer par une majuscule.
+5005 Le joueur existe deja.
+5006 Le personnage existe deja.
+5007 Le joueur n'est pas present.
+5008 Le fichier est inexistant.

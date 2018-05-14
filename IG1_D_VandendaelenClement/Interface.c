@@ -52,12 +52,13 @@ void dialogue(Message * pLexique) {
 		default:
 			break;
 		}
-		system("pause");
 
 		if (erreur != PAS_D_ERREUR) {
 			afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + erreur);
 			erreur = PAS_D_ERREUR;
 		}
+
+		system("pause");
 		choix = choixObtenu(pLexique, MENU_PRINCIPAL);
 	}
 	libèreJoueursPersonnages(pDebJoueurs);
@@ -85,7 +86,6 @@ CodeErreur chargerJoueursPersonnages(Message * pLexique, Joueur ** pDebJoueurs) 
 CodeErreur ajouterPersonnage(Message * pLexique, Joueur ** pDebJoueurs) {
 	Personnage *pNouvPerso;
 	if (!nouveauPersonnage(&pNouvPerso)) {
-		afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + ALLOCATION_MEMOIRE);
 		return ALLOCATION_MEMOIRE;
 	}
 	else {
@@ -94,7 +94,6 @@ CodeErreur ajouterPersonnage(Message * pLexique, Joueur ** pDebJoueurs) {
 		afficherTitre(pLexique, TITRE_PERSO_AJOUT);
 		pseudoObtenu(pLexique, pseudo);
 		if (!joueurExiste(*pDebJoueurs, pseudo, &pJoueur, &pSauveJoueur)) {
-			afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + JOUEUR_ABSENT);
 			return JOUEUR_ABSENT;
 		}
 		else {
@@ -106,7 +105,6 @@ CodeErreur ajouterPersonnage(Message * pLexique, Joueur ** pDebJoueurs) {
 CodeErreur ajouterJoueurPersonnage(Message * pLexique, Joueur ** pDebJoueur) {
 	Joueur *pNouvJoueur;
 	if (!nouveauJoueur(&pNouvJoueur)) {
-		afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + ALLOCATION_MEMOIRE);
 		return ALLOCATION_MEMOIRE;
 	}
 	else {
@@ -118,7 +116,6 @@ CodeErreur ajouterJoueurPersonnage(Message * pLexique, Joueur ** pDebJoueur) {
 
 		if (joueurExiste(*pDebJoueur, pseudo, &pJoueur, &pSauvJoueur)) {
 			libereJoueur(pJoueur);
-			afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + JOUEUR_DEJA_PRESENT);
 			return JOUEUR_DEJA_PRESENT;
 		}
 		else {
@@ -126,7 +123,6 @@ CodeErreur ajouterJoueurPersonnage(Message * pLexique, Joueur ** pDebJoueur) {
 			do {
 				Personnage *pNouvPerso = NULL;
 				if (!nouveauPersonnage(&pNouvPerso)) {
-					afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + ALLOCATION_MEMOIRE);
 					return ALLOCATION_MEMOIRE;
 				}
 				ajouterPersonnageAJoueur(pLexique, pNouvJoueur, pNouvPerso);
@@ -142,7 +138,6 @@ CodeErreur ajouterPersonnageAJoueur(Message *pLexique, Joueur *pJoueur, Personna
 
 	nomObtenu(pLexique, nom);
 	if (personnageExiste(pJoueur, nom, &pPerso, &pSauvePerso)) {
-		afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + PERSONNAGE_DEJA_PRESENT);
 		liberePersonnage(pNouvPerso);
 		return PERSONNAGE_DEJA_PRESENT;
 	}
@@ -199,7 +194,6 @@ CodeErreur supprimerJoueurPersonnages(Message *pLexique, Joueur ** ppDebJoueurs)
 	afficherTitre(pLexique, TITRE_JOUEUR_SUPPR);
 	pseudoObtenu(pLexique, pseudo);
 	if (!joueurExiste(*ppDebJoueurs, pseudo, &pJoueur, &pSauveJoueur)) {
-		afficherMessage(pLexique, NUM_DEB_MESSAGE_ERREUR + JOUEUR_ABSENT);
 		return JOUEUR_ABSENT;
 	}
 	else {
