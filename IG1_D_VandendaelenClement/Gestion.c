@@ -84,17 +84,23 @@ void supprimeJoueur(Joueur ** ppDebJoueurs, Joueur * pJoueur, Joueur * pSauvJoue
 void listeJoueurs(Joueur *pDebJoueurs) {
 	Joueur *pJoueur = pDebJoueurs;
 	Personnage *pPerso;
+	int totalJoueur;
 	
+	//Liste des joueurs
 	while (pJoueur != NULL) {
 		pPerso = pJoueur->pDebPersonnages;
 		printf("** %s **\n", pJoueur->pseudo);
+		totalJoueur = 0;
+		//Liste des personnages du joueur
 		while (pPerso != NULL) {
 			printf("%s : %d\n", pPerso->nom, pPerso->points);
+			totalJoueur += pPerso->points;
 			pPerso = pPerso->pSuiv;
 		}
+		printf(".: Total des points = %d :.\n", totalJoueur);
 		puts("-----");
+		
 		pJoueur = pJoueur->pSuiv;
-
 	}
 }
 
