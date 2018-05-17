@@ -97,7 +97,7 @@ void listeJoueurs(Joueur *pDebJoueurs) {
 			totalJoueur += pPerso->points;
 			pPerso = pPerso->pSuiv;
 		}
-		printf(".: Total des points = %d :.\n", totalJoueur);
+		printf(".: %d :.\n", totalJoueur);
 		puts("-----");
 		
 		pJoueur = pJoueur->pSuiv;
