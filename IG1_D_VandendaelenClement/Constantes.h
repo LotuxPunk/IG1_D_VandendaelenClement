@@ -4,6 +4,7 @@
 #define NBCARMAXJOUEUR 30
 #define NBCARMAXPERSONNAGE 30
 #define NOMFICHIER "joueurs.dat"
+#define PAUSE system("pause")
 
 typedef enum codeErreur CodeErreur;
 enum codeErreur { 
