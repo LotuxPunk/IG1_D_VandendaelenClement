@@ -52,6 +52,9 @@ void dialogue(Message * pLexique) {
 			erreur = sauverJoueurPersonnages(pLexique, pDebJoueurs);
 			PAUSE;
 			break;
+		case SUPPRIMER_PERSONNAGE_JOUEUR:
+			erreur = supprimerPersonnageAJoueur(pLexique, &pDebJoueurs);
+			break;
 		default:
 			break;
 		}
@@ -220,3 +223,27 @@ CodeErreur sauverJoueurPersonnages(Message * pLexique, Joueur * pDebJoueurs) {
 	return sauverJoueurs(pDebJoueurs);
 }
 
+CodeErreur supprimerPersonnageAJoueur(Message * pLexique, Joueur ** ppDebJoueurs) {
+	char pseudo[NBCARMAXJOUEUR];
+	Joueur *pJoueur = NULL, *pSauveJoueur = NULL;
+	afficherTitre(pLexique, TITRE_PERSO_SUPPR);
+	pseudoObtenu(pLexique, pseudo);
+
+	//Recherche du joueur
+	if (!joueurExiste(*ppDebJoueurs, pseudo, &pJoueur, &pSauveJoueur)) {
+		return JOUEUR_ABSENT;
+	}
+
+	//Recherche du personnage
+	char nomPersonnage[NBCARMAXPERSONNAGE];
+	Personnage *pPerso = NULL, *pSauvePerso = NULL;
+	nomObtenu(pLexique, nomPersonnage);
+	if (!personnageExiste(pJoueur, nomPersonnage, &pPerso, &pSauvePerso)) {
+		return PERSONNAGE_ABSENT;
+	}
+
+	//Suppression vu que présent
+	supprimePersonnageJoueur(&pJoueur, pPerso, &pSauvePerso);
+	return PAS_D_ERREUR;
+
+}

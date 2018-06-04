@@ -19,6 +19,7 @@ CodeErreur ajouterPersonnageAJoueur(pLexique, pNouvJoueur, pNouvPerso);
 CodeErreur supprimerJoueurPersonnages(Message *pLexique, Joueur ** ppDebJoueurs);
 void afficherJoueursPersonnages(Message *pLexique, Joueur *pDebJoueurs);
 CodeErreur sauverJoueurPersonnages(Message *pLexique, Joueur *pDebJoueurs);
+CodeErreur supprimerPersonnageAJoueur(Message * pLexique, Joueur ** ppDebJoueurs);
 
 //Gestion
 bool joueurExiste(Joueur *pDebJoueurs, char pseudo[], Joueur **ppJoueur, Joueur **ppSauvJoueur);
@@ -33,6 +34,7 @@ void supprimeJoueur(Joueur **ppDebJoueurs, Joueur *pJoueur, Joueur *pSauvJoueur)
 void listeJoueurs(Joueur *pDebJoueurs);
 int nbPersonnages(Joueur *pJoueur);
 void libèreJoueursPersonnages(Joueur *pDebJoueurs);
+void supprimePersonnageJoueur(Joueur **pJoueur, Personnage *pPerso, Personnage **pSauvePerso);
 
 //Fichiers
 CodeErreur sauverJoueurs(Joueur *pDebJoueurs);

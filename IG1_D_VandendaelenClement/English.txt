@@ -5,7 +5,8 @@
 1004 Delete a player
 1005 Show players and their characters
 1006 Save players and characters
-1007 Exit
+1007 Delete a character of a player
+1008 Exit
 2001 Nickname :
 2002 Name : 
 2003 Points :
@@ -35,3 +36,4 @@
 5006 The character already exists.
 5007 The player is not present.
 5008 The file is non-existent.
+5009 The character does not exist.

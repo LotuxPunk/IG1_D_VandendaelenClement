@@ -81,6 +81,16 @@ void supprimeJoueur(Joueur ** ppDebJoueurs, Joueur * pJoueur, Joueur * pSauvJoue
 	libereJoueur(pJoueur);
 }
 
+void supprimePersonnageJoueur(Joueur **pJoueur, Personnage *pPerso, Personnage **pSauvePerso) {
+	if (*pSauvePerso != NULL) {
+		(*pSauvePerso)->pSuiv = pPerso->pSuiv;
+	}
+	else {
+		(*pJoueur)->pDebPersonnages = pPerso->pSuiv;
+	}	
+	liberePersonnage(pPerso);
+}
+
 void listeJoueurs(Joueur *pDebJoueurs) {
 	Joueur *pJoueur = pDebJoueurs;
 	Personnage *pPerso;

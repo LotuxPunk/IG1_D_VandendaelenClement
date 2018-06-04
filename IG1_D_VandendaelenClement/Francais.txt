@@ -5,7 +5,8 @@
 1004 Supprimer un joueur
 1005 Afficher les joueurs et ses personnages
 1006 Sauver les joueurs et les personnages
-1007 Quitter
+1007 Supprimer un personnage à un joueur
+1008 Quitter
 2001 Pseudo :
 2002 Nom : 
 2003 Points :
@@ -35,3 +36,4 @@
 5006 Le personnage existe deja.
 5007 Le joueur n'est pas present.
 5008 Le fichier est inexistant.
+5009 Le personnage n'existe pas.
